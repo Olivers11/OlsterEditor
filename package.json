@@ -1,0 +1,23 @@
+{
+  "name": "Editor",
+  "productName": "OlsterCode",
+  "version": "1.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icono.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"OlsterCode\"",
+    "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds"
+  },
+  "keywords": [],
+  "author": "Oliver Tzunun",
+  "license": "ISC",
+  "dependencies": {
+    "child-process": "^1.0.2",
+    "electron": "^9.1.1",
+    "electron-packager": "^15.0.0",
+    "electron-reload": "^1.5.0"
+  }
+}

@@ -1,0 +1,329 @@
+<html>
+    <head>
+        <title>
+            PESTAÑAS
+        </title>
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/titleBar.css">
+        <link rel="stylesheet" href="../css/menu.css">
+        <link rel="stylesheet" href="../css/snippetsStyles.css">
+        <script>
+        if (typeof module === 'object')
+         {
+              window.module = module; module = undefined;
+         }
+         </script>
+        <script type='text/javascript' src="../js/jquery.min.js"></script>
+        <script type='text/javascript' src="../js/jquery.menu.js"></script>
+    </head>
+    <body>
+        
+        <div class="container">
+
+            <div class="titleBar titleBarStyle ">
+    
+                <div class="windowTitle preventSelect draggable"> OlsterCode <b><img align="left" style="float: left; margin: 0;" src="../img/icon.png" height="25" alt=""></b> </div>
+    
+                <div class="windowControls windowControlsStyle preventSelect">
+    
+                    <button onclick="validar(this)" id="minimizar" style="color: white;">--</button>
+                    <button onclick="validar(this)" id="maximizar" style="color: dodgerblue;">+</button>
+                    <button onclick="validar(this)" id="salir" style="color: brown;">x</button>
+    
+                </div>
+    
+                <div id="menu-bar">
+                    <ul class="main-menu">
+                        <li>
+                            Archivo
+                            <ul>
+    
+                                <li class="icon save" onclick='SaveFile()'><a href="#">Guardar <span>Ctrl+N</span></a>
+                                </li>
+                                <li onclick="Directorio()" >Folder</li>
+    
+                                <li class="separator"></li>
+                                <li class="icon save" onclick=''><a
+                                        href="">Nuevo<span>Ctrl+S</span></a></li>
+    
+                                <li class="icon save"><a onclick="guardar()">Guardar como</a></li>
+    
+                                <li class="separator"></li>
+    
+                            </ul>
+                        </li>
+                        <li>
+                            Ver
+                            <ul>
+                                <li>Documentacion
+                                    <ul>
+                                        <li>Todo</li>
+                                        <li class="separator"></li>
+                                        <li>Indefinido</li>
+                                        <li>Cerrar</li>
+                                    </ul>
+                                </li>
+                                <li><a href="/#!/products">Productos</a></li>
+                                <li class="separator"></li>
+                                <li>
+                                    First level
+                                    <ul>
+                                        <li>
+                                            Second level
+                                            <ul>
+                                                <li>
+                                                    Third level menu item
+                                                </li>
+                                                <li>
+                                                    Third level
+                                                    <ul>
+                                                        <li>
+                                                            Forth level menu item 1
+                                                        </li>
+                                                        <li>
+                                                            Forth level menu item 2
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="separator"></li>
+                                                <li>Another third level menu item</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            Items will make menus stretch as needed
+                                        </li>
+                                        <li class="separator"></li>
+                                        <li>
+                                            Another menu item
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="separator"></li>
+                                <li>Reports
+                                    <ul>
+                                        <li>Sell history</li>
+                                        <li>Clients history</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Ventana
+                            <ul>
+                                <li class="icon save"><a href="javascript:void(0)">Pantalla Completa<span>F11</span></a></li>
+    
+                                <li>
+                                    <a href="javascript:void(0)" onclick='toggleWidgets()'>Elementos<span><input
+                                                type='checkbox' id='widgetCheckbox'></span></a>
+                                </li>
+                                <li class="separator"></li>
+                                <li onclick="Delete()">
+                                    Limpiar
+                                </li>
+                            </ul>
+                        </li>
+    
+                        <li>
+                            Leguaje >
+                            <ul>
+                                <li>Lenguajes
+                                    <ul>
+                                        <li><a onclick="lenguaje2(this)" id="python" href="#">Python</a></li>
+                                        <li><a onclick="lenguaje2(this)" id="javascript" href="#">Javascript</a></li>
+                                        <li><a onclick="lenguaje2(this)" id="html" href="#">HTML</a></li>
+                                        <li><a onclick="lenguaje2(this)" id="css" href="#">CSS</a></li>
+                                        <li><a onclick="lenguaje2(this)" id="c++" href="#">C++</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+    
+                        <li>
+                            Temas
+                            <ul>
+                                <li id="dracula" onclick="estilo(this)">Dracula</li>
+                                <li id="dream" onclick="estilo(this)">Dreamweather</li>
+                                <li id="monokai" onclick="estilo(this)">Monokai</li>
+                                <li id="pastel" onclick="estilo(this)">Pastel</li>
+                                <li id="twi" onclick="estilo(this)">Twilight</li>
+                                <li class="separator"></li>
+                            </ul>
+                        </li>
+    
+                        <li>
+                            Ayuda
+                            <ul>
+                                <li class="separator"></li>
+                                <li class="separator"></li>
+                                <li onclick="contact()">Contacto</li>
+                            </ul>
+                        </li>
+                        <li id="direction" style="color: white;">
+
+                        </li>
+                        <li id="lenguaje" style="color: white">
+
+                        </li>
+                    </ul>
+                </div>
+    
+            </div>
+    
+    
+            <div class="codingScreen codingScreenStyles">
+    
+                <div class="explorerContainer explorerContainerStyles">
+    
+    
+                    <div class="filesContainer">
+    
+                    </div>
+    
+                    <div class="folderFiles">
+    
+                        <div class="folderTitle">
+    
+                            <div id="folderName"><button onclick="Directorio()" style="cursor: pointer;">Folder</button></div>
+    
+                            <button id="syncFiles">Refrescar</button>
+                            <button id="changeFolder" onclick="mostrar()">Archivos</button>
+    
+                        </div>
+    
+                        <div id="files_" class="exploredFilesContainer">
+    
+                            <table id="tabla_" style="color: #D61424; text-align: left; font-size: 80%;">
+
+                            </table>
+    
+                        </div>
+    
+                    </div>
+                </div>
+    
+                <div class="editorContainer">
+                    
+                    <div id="editor" style="font-size: 100%;">
+
+                    </div>
+                    
+                </div>
+    
+                <div class="widgetsContainer widgetsContainerStyles">
+    
+                    <div class="widgetsDrawer">
+                        <div class="widgetsHeader">
+                            <span></span>
+                        </div>
+    
+                        <button  id="stackOverflow"></button>
+                        <button id="fontAwesome"></button>
+                        <button id="github"></button>
+                        <button id="cdnjs"></button>
+    
+                    </div>
+    
+                </div>
+            </div>
+    
+        </div>
+        <script src="../js/ace.js"></script>    
+        <script src="../js/titleBarStuff.js"></script>
+        <script src="../js/theme-twilight.js"></script>
+        <script src="../js/mode-javascript.js"></script>
+        <script src="../js/mode-python.js"></script>
+        <script src="../js/mode-scss.js"></script>
+        <script src="../js/mode-html.js"></script>
+        <script src="../js/mode-c_cpp.js"></script>
+        <script src="../js/shortcuts.js"></script>
+        <script src="../js/save_file.js"></script>
+        <script src="../js/main.js"></script>
+        <script src="../js/ext-language_tools.js"></script>
+        <script>
+
+            function contact()
+            {
+                alert("Puede Contactarse a: https://github.com/Olivers11");
+            }
+
+
+            function estilo(objeto)
+            {
+                if (objeto.id == "dracula") 
+                {
+                    editor.setTheme("ace/theme/dracula");
+                }
+                else if(objeto.id == "dream")
+                {
+                    editor.setTheme("ace/theme/dreamweaver");
+                }
+                else if(objeto.id == "monokai")
+                {
+                    editor.setTheme("ace/theme/monokai");
+                }
+                else if(objeto.id == "pastel")
+                {
+                    editor.setTheme("ace/theme/pastel_on_dark");
+                }
+                else
+                {
+                    editor.setTheme("ace/theme/twilight");
+                }
+            }
+
+
+            let editor = ace.edit("editor");
+            editor.setTheme("ace/theme/dracula");
+            editor.setOptions({
+                enableBasicAutocompletion: true,
+                enableSnippets: true,
+                enableLiveAutocompletion: false
+            });
+
+            let anterior;
+            let lenguaje;
+            function Delete()
+            {
+                console.log(editor.session.getValue());
+                editor.session.undo();
+            }
+
+
+            function lenguaje2(elemento)
+            {
+                if(elemento.id == "python")
+                {
+                    document.getElementById('lenguaje').innerHTML = `<input type="button" value="python">`;
+                    editor.session.setMode("ace/mode/python");
+                    lenguaje = "Python";
+                }
+                else if(elemento.id == "javascript")
+                {
+                    document.getElementById('lenguaje').innerHTML = `<input type="button" value="javascript" >`
+                    editor.session.setMode("ace/mode/javascript");
+                    lenguaje = "javascript";
+                }
+                else if(elemento.id == "css")
+                {
+                    document.getElementById('lenguaje').innerHTML = `<input type="button" value="javascript" >`
+                    editor.session.setMode("ace/mode/scss")
+                    lenguaje = "css";
+                }
+                else if(elemento.id == "html")
+                {
+                    document.getElementById('lenguaje').innerHTML = `<input type="button" value="html" >`
+                    editor.session.setMode("ace/mode/html");
+                    lenguaje = "html";
+                }
+                else if(elemento.id == "c++")
+                {
+                    document.getElementById('lenguaje').innerHTML = `<input type="button" value="c++" >`
+                    editor.session.setMode("ace/mode/c_cpp");
+                    lenguaje = "cpp";
+                }
+            }
+            
+            
+        </script>
+    </body>
+</html>
