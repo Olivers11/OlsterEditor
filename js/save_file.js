@@ -3,8 +3,24 @@ let txt_ = document.getElementById('editor');
 const {dialog} = require('electron').remote;
 let readline = require('readline');
 let item;
+let guardado = false;
 const { ENGINE_METHOD_STORE } = require('constants');
 let direct, content;
+
+
+
+
+function Nuevo(){
+  guardado = true;
+  editor.setValue("Ingresar tu codigo aqui!");
+}
+
+
+
+
+
+
+
 
 function RetornarExtencion(){
 	if(lenguaje == "Python")
@@ -27,9 +43,13 @@ function RetornarExtencion(){
 	{
 		return ".cpp";
 	}
+  else if(lenguaje == "ruby")
+  {
+    return ".rb";
+  }
   else
   {
-    alert("No hay ninguna descripcion de lenguaje");
+    alertify.error("No hay ninguna descripcion de lenguaje");
     return ".txt";
   }
 }
@@ -54,24 +74,38 @@ function Escribir(dir, lenguaje)
 }
 
 
+function funcion()
+{
+  if(guardado === true)
+  {
+    guardado = false;
+    editor.setValue("#Ingresa tu codigo");
+  }
+  else
+  {
+    alertify.error("Debes guardar el archivo actual");
+  }
+}
+
+
 function guardar()
 {
-
+  guardado = true;
     filename = dialog.showSaveDialog({}
     ).then(result => {
       filename = result.filePath;
       if (filename === undefined) {
-        alert('Debe colocar un nombre para su archivo');
+        alertify.alert('Debe colocar un nombre para su archivo');
         return;
       }
       fs.writeFile(filename + RetornarExtencion(), editor.getValue(), (err) => {
         if (err) {
-          alert('Error al crear el archivo ' + err.message);
+          alertify.alert('Error al crear el archivo ' + err.message);
           return
         }
-        alert('Archivo creado correctamente');
+        alertify.alert('Archivo creado correctamente');
       })
-      alert('Hemos terminado!');
+      alertify.alert('Hemos terminado!');
     }).catch(err => {
       alert(err)
     })
@@ -95,6 +129,12 @@ function Directorio()
 
 function mostrar()
 {
+  if(typeof direct === 'undefined')
+  {
+    alertify.error("Debes seleccionar un folder primero!");
+  }
+  else
+  {
     fs.readdir(direct, function (err, archivos) {
         if (err) {
         onError(err);
@@ -110,13 +150,18 @@ function mostrar()
                 tabla.innerHTML += `<input type="submit" value="${archivos[i]}" onclick="Imprimir(this)" id="${direct + '\\' + archivos[i]}" name=""> <br>`;
             }
            
-        }
-        });
+      }
+      });
+  }
+    
 }
 
 /* LEER FILE */
 function Imprimir(iteme)
 {
+  console.log(guardado);
+  if(guardado === true)
+  {
     item = iteme;
     console.log(item.id);
     var name_file = item.id;
@@ -126,6 +171,12 @@ function Imprimir(iteme)
         content = datos;
         editor.setValue(content);
     });
+  }
+  else
+  {
+    alertify.error("Debe Guardar antes el archivo actual");
+  }
+    
 }
 
 
@@ -163,11 +214,18 @@ function Run()
 
 function SaveFile()
 {
-    DeleteFile(item.id);
-    fs.appendFile(item.id, editor.getValue(), (err) => {
-      if (err) throw err;
-      console.log('Archivo Creado Satisfactoriamente');
-    });
+    if(typeof item === 'undefined')
+    {
+      alertify.error("Debes guardarlo con 'Guardar Como' ");
+    }
+    else
+    {
+      DeleteFile(item.id);
+      fs.appendFile(item.id, editor.getValue(), (err) => {
+        if (err) throw err;
+        console.log('Archivo Creado Satisfactoriamente');
+      });
+    }
 }
 
 function Delete()

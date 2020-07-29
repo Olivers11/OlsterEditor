@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="../css/titleBar.css">
         <link rel="stylesheet" href="../css/menu.css">
         <link rel="stylesheet" href="../css/snippetsStyles.css">
+        <link rel="stylesheet" type="text/css" href="../alertifyjs/css/themes/default.css">
+        <link rel="stylesheet" type="text/css" href="../alertifyjs/css/alertify.css">
         <script>
         if (typeof module === 'object')
          {
@@ -43,9 +45,9 @@
                                 <li onclick="Directorio()" >Folder</li>
     
                                 <li class="separator"></li>
-                                <li class="icon save" onclick=''><a
-                                        href="">Nuevo<span>Ctrl+S</span></a></li>
-    
+                                <li class="icon save" onclick=''><a onclick="funcion()" >Nuevo<span>Ctrl+S</span></a></li>
+                                <li class="icon save" onclick='Nuevo()'><a>Nuevo sin Guardar</a></li>
+                                    
                                 <li class="icon save"><a onclick="guardar()">Guardar como</a></li>
     
                                 <li class="separator"></li>
@@ -57,13 +59,13 @@
                             <ul>
                                 <li>Documentacion
                                     <ul>
-                                        <li>Todo</li>
+                                        <li onclick="Documentacion()">Todo</li>
                                         <li class="separator"></li>
-                                        <li>Indefinido</li>
-                                        <li>Cerrar</li>
+                                        <li onclick="Repo()">Repositorio</li>
+                                        <li onclick="validar('salir')">Cerrar</li>
                                     </ul>
                                 </li>
-                                <li><a href="/#!/products">Productos</a></li>
+                                <li><a href="/#!/products">Proyectos</a></li>
                                 <li class="separator"></li>
                                 <li>
                                     First level
@@ -133,6 +135,7 @@
                                         <li><a onclick="lenguaje2(this)" id="html" href="#">HTML</a></li>
                                         <li><a onclick="lenguaje2(this)" id="css" href="#">CSS</a></li>
                                         <li><a onclick="lenguaje2(this)" id="c++" href="#">C++</a></li>
+                                        <li><a onclick="lenguaje2(this)" id="ruby" href="#">Ruby</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -237,15 +240,12 @@
         <script src="../js/mode-c_cpp.js"></script>
         <script src="../js/shortcuts.js"></script>
         <script src="../js/save_file.js"></script>
+        <script type="text/javascript" src="../alertifyjs/alertify.js"></script>
         <script src="../js/main.js"></script>
         <script src="../js/ext-language_tools.js"></script>
         <script>
 
-            function contact()
-            {
-                alert("Puede Contactarse a: https://github.com/Olivers11");
-            }
-
+            alertify.error("Para comenzar por favor selecciona un lenguaje en la parte superior");
 
             function estilo(objeto)
             {
@@ -320,6 +320,12 @@
                     document.getElementById('lenguaje').innerHTML = `<input type="button" value="c++" >`
                     editor.session.setMode("ace/mode/c_cpp");
                     lenguaje = "cpp";
+                }
+                else if(elemento.id == "ruby")
+                {
+                   document.getElementById('lenguaje').innerHTML = `<input type="button" value="ruby" >`
+                    editor.session.setMode("ace/mode/ruby");
+                    lenguaje = "ruby"; 
                 }
             }
             
