@@ -1,6 +1,6 @@
 # OlsterEditor
-Para modificar el programa, descarga el zip del repositorio, posteriormente deberas instalar los node-modules
-Requerimientos **electron** principalmente este programa trabaja con este framework, solo deberas instalarlo 
+Para modificar el programa, descarga el zip del repositorio, posteriormente deberas instalar los "node-modules" 
+requerimientos **electron** principalmente este programa trabaja con este framework, solo deberas instalarlo 
 utilizando "npm" con el siguiente comando: "npm install electron", los demas requerimientos son dependencias
 de desarrollo como lo describe el "package.json". 
 -----------------------------------------------------------------------------------------------------------
