@@ -16,7 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "child-process": "^1.0.2",
-    "electron": "^9.3.1",
+    "electron": "^15.5.5",
     "electron-packager": "^15.0.0",
     "electron-reload": "^1.5.0"
   }
